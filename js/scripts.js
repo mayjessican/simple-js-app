@@ -1,4 +1,4 @@
-var repository= [
+var repository=[
 {
   creatureName: 'Ninetales',
   creatureHeight: 1.1,
@@ -25,9 +25,9 @@ var repository= [
 }
 ];
 
-for (var i=0; i<repository.length; i++) {
-  document.write('<h2>' + repository[i].creatureName + '</h2>' + 'Height:' + repository[i].creatureHeight)
-if (repository[i].creatureHeight >= 2.00) {
-  document.write('(Wow that\'s big)!')
-  }
-}
+repository.forEach (function(){
+  document.write('<h2>' + repository.creatureName + '</h2>' + 'Height:' + repository.creatureHeight);
+  if (repository.creatureHeight === 2.00);{
+    document.write('(Wow that\'s big)!')
+    }
+});
