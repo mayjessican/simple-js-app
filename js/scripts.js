@@ -25,11 +25,11 @@ var pokemonRepository = (function () {
   }];
 
 function add(pokemon) {
-      pokemonRepository.push(pokemon);
+      repository.push(pokemon);
 }
 
 function getAll() {
-      return Repository;
+      return repository;
 }
 
 return {
@@ -38,13 +38,15 @@ return {
 };
 })();
 
-console.log(Repository.getAll());
-repository.add({ name: 'repository' });
-console.log(repository.getAll());
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({ creatureName: 'Pikachu' });
+console.log(pokemonRepository.getAll());
 
-repository.forEach (function(){
-  console.log('<h2>' + repository.creatureName + '</h2>' + 'Height:' + repository.creatureHeight);
-  if (repository.creatureHeight === 2.00);{
-    document.write('(Wow that\'s big)!')
-    }
+pokemonRepository.getAll().forEach (function(pokemon){
+  console.log('<h2>' + pokemon.creatureName + '</h2>' + 'Height:' + pokemon.creatureHeight);
+  if (pokemon.creatureHeight >= 2.00){
+    document.write('<h2>' + pokemon.creatureName + '</h2>' + 'Height:' + pokemon.creatureHeight + '(Wow that\'s big)!')
+  } else {
+    document.write('<h2>' + pokemon.creatureName + '</h2>' + 'Height:' + pokemon.creatureHeight);
+  }
 });
