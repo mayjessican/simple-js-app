@@ -49,4 +49,4 @@ pokemonRepository.getAll().forEach (function(pokemon){
   } else {
     document.write('<h2>' + pokemon.creatureName + '</h2>' + 'Height:' + pokemon.creatureHeight);
   }
-});
+}); 
