@@ -1,5 +1,5 @@
 var pokemonRepository = (function () {
-  var respository = [{
+  var repository = [{
     creatureName: 'Ninetales',
     creatureHeight: 1.1,
     creatureAbilities: ['Flash-fire', 'Drought'],
@@ -25,11 +25,11 @@ var pokemonRepository = (function () {
   }];
 
 function add(pokemon) {
-      pokemonList.push(pokemon);
+      pokemonRepository.push(pokemon);
 }
 
 function getAll() {
-      return pokemonList;
+      return Repository;
 }
 
 return {
@@ -38,14 +38,13 @@ return {
 };
 })();
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Pikachu' });
-console.log(pokemonRepository.getAll());
+console.log(Repository.getAll());
+repository.add({ name: 'repository' });
+console.log(repository.getAll());
 
-
-repository.forEach (function(pokemon){
-  document.write('<h2>' + repository.creatureName + '</h2>' + 'Height:' + repository.creatureHeight);
+repository.forEach (function(){
+  console.log('<h2>' + repository.creatureName + '</h2>' + 'Height:' + repository.creatureHeight);
   if (repository.creatureHeight === 2.00);{
     document.write('(Wow that\'s big)!')
     }
-})
+});
