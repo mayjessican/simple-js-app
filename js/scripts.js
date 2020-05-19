@@ -26,19 +26,6 @@ pokemonRepository.loadList().then(function() {
         addListItem(pokemon);
     });
 
-    return {
-        add: add,
-        getAll: getAll,
-        addListItem: addListItem,
-        loadList: loadList,
-        loadDetails: loadDetails,
-        createReusableModal: createReusableModal,
-        showModal: showModal,
-        hideModal: hideModal
-    };
-
-});
-
 //function to push pokemon repository
 function add(pokemon) {
     pokemnonRepository.push(pokemon);
@@ -66,6 +53,18 @@ function addListItem(pokemon) {
         creatureName: 'Pikachu'
     });
     console.log(pokemonRepository.getAll());
+
+    return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        createReusableModal: createReusableModal,
+        showModal: showModal,
+        hideModal: hideModal
+    };
+})();
 
     //Creates list of Pokemon with Pokemon's name on the button
     pokemonRepository.loadList().then(function() {
