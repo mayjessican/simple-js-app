@@ -59,6 +59,6 @@ return {
 
 var pokemonRepository = document.querySelector('.pokemon-list');
 
-pokemonRepository.getAll().forEach (function(pokemon){
-  pokemonRepository.addListItem(pokemon)
-});
+// pokemonRepository.getAll().forEach (function(pokemon){
+//  pokemonRepository.addListItem(pokemon)
+//});
