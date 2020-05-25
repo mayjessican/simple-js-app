@@ -1,5 +1,5 @@
 var pokemonRepository = (function () {
-  var pokemon = [{
+  var repository = [{
     creatureName: 'Ninetales',
     creatureHeight: 1.1,
     creatureAbilities: ['Flash-fire', 'Drought'],
@@ -36,15 +36,6 @@ function addListItem(){
     showDetails(pokemon)
 });
 
-function showDetails(pokemon) {
-     console.log(pokemon.name + pokemon.height + pokemon.type);
-     alert(pokemon.name);
-   }
-
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({ creatureName: 'Pikachu' });
-console.log(pokemonRepository.getAll());
-
 function add(pokemon) {
       repository.push(pokemon);
 };
@@ -53,10 +44,19 @@ function getAll() {
       return repository;
 };
 
+function showDetails(pokemon) {
+     console.log(pokemon.creatureName + pokemon.creatureHeight + pokemon.creatureType);
+     alert(pokemon.name);
+   }
+
 return {
       add: add,
-      getAll: getAll
+      getAll: getAll,
+      addListItem: addListItem,
+      showDetails: showDetails
 };
+})();
 
-pokemonRepository.getAll().forEach (function(pokemon));
-  })();
+pokemonRepository.getAll().forEach (function(pokemon){
+  pokemonRepository.addListItem(pokemon)
+});
