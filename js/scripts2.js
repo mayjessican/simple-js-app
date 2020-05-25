@@ -57,7 +57,7 @@ return {
 };
 })();
 
-var pokemonRepository = document.querySelector('.pokemon-list');
+var pokemonRepository = document.querySelectorAll('.pokemon-list');
 
 // pokemonRepository.getAll().forEach (function(pokemon){
 //  pokemonRepository.addListItem(pokemon)
