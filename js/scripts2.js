@@ -25,10 +25,10 @@ var pokemonRepository = (function () {
   }];
 
 function addListItem(){
-  var listItem = document.createElement('li');
-  var button = document.createElement('button');
-  button.innerText = 'pokemon.creatuerName';
-  button.classList.add('creatureName');
+  var listItem = document.querySelector('#li');
+  var button = document.querySelector('#button');
+  button.innerText = 'pokemon.creatureName';
+  button.classList.add('.creatureName');
   listItem.appendChild(button);
   pokemon.appendChild(li);
   button.addEventListener('click', function(event) {
