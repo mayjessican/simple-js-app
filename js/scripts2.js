@@ -32,12 +32,14 @@ function addListItem(){
   button.classList.add('creatureName');
   listItem.appendChild(button);
   pokemonList.appendChild(li);
-  button.addEventListener('click', function(showDetails) {
+  button.addEventListener('click', function(event) {
+    showDetails(pokemon)
 });
 
-function showDetails(pokemon){
-  console.log();
-}
+function showDetails(pokemon) {
+     console.log(pokemon.name + pokemon.height + pokemon.type);
+     alert(pokemon.name);
+   }
 
 console.log(pokemonRepository.getAll());
 pokemonRepository.add({ creatureName: 'Pikachu' });
