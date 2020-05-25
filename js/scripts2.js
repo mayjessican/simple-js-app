@@ -1,5 +1,5 @@
 var pokemonRepository = (function () {
-  var repository = [{
+  var pokemon = [{
     creatureName: 'Ninetales',
     creatureHeight: 1.1,
     creatureAbilities: ['Flash-fire', 'Drought'],
@@ -25,28 +25,28 @@ var pokemonRepository = (function () {
   }];
 
 function addListItem(){
-  var pokemonList = document.querySelector('ul')
-  var listItem = document.querySelector('li');
-  var button = document.querySelector('button');
+  var listItem = document.createElement('li');
+  var button = document.createElement('button');
   button.innerText = 'pokemon.creatuerName';
   button.classList.add('creatureName');
   listItem.appendChild(button);
-  pokemonList.appendChild(li);
+  pokemon.appendChild(li);
   button.addEventListener('click', function(event) {
     showDetails(pokemon)
 });
+}
 
 function add(pokemon) {
       repository.push(pokemon);
 };
 
 function getAll() {
-      return repository;
+      return pokemon;
 };
 
 function showDetails(pokemon) {
      console.log(pokemon.creatureName + pokemon.creatureHeight + pokemon.creatureType);
-     alert(pokemon.name);
+     alert(pokemon.creatureName);
    }
 
 return {
