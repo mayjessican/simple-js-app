@@ -18,7 +18,6 @@ var pokemonRepository = (function(pokemon) {
             console.error(e);
         })
     }
-})();
 
 pokemonRepository.loadList().then(function() {
     // Now the data is loaded!
@@ -28,23 +27,23 @@ pokemonRepository.loadList().then(function() {
 
 //function to push pokemon repository
 function add(pokemon) {
-    pokemnonRepository.push(pokemon);
+    pokemonList.push(pokemon);
 }
 
 function getAll() {
-    return pokemonRepository;
+    return pokemonList;
 }
 
 //Function to add list for each pokemon object
-function addListItem(pokemon) {
-    var listItem = document.createElement('li');
-    var button = document.createElement('button');
+function addListItem(pokemonList) {
+    var listItem = document.querySelector('li');
+    var button = document.querySelector('button');
     button.innerText = pokemon.creatuerName;
     button.classList.add('pokemon-name');
     listItem.appendChild(button);
-    $pokemonList.appendChild(listItem)
+    pokemonList.appendChild(li);
     button.addEventListener('click', function() {
-        showDetails(pokemon)
+        showDetails(pokemon);
     })
 
     //Function to add another element
@@ -54,17 +53,15 @@ function addListItem(pokemon) {
     });
     console.log(pokemonRepository.getAll());
 
+//return function (){}
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails,
-        createReusableModal: createReusableModal,
-        showModal: showModal,
-        hideModal: hideModal
     };
-})();
+};
 
     //Creates list of Pokemon with Pokemon's name on the button
     pokemonRepository.loadList().then(function() {
@@ -73,4 +70,5 @@ function addListItem(pokemon) {
                 //Data loaded
                 pokemonRepository.getAll().forEach(function(pokemon) {
                     pokemonRepository.addListItem(pokemon);
-    });
+});
+});
