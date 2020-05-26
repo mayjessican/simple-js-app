@@ -24,9 +24,9 @@ var pokemonRepository = (function () {
     creatureTypes: ['Sleep', 'Charm'],
   }];
 
-function addListItem(){
-  var listItem = document.querySelector('#li');
-  var button = document.querySelector('#button');
+function addListItem(pokemon){
+  var listItem = document.createElement('#li');
+  var button = document.createElement('#button');
   button.innerText = 'pokemon.creatureName';
   button.classList.add('.creatureName');
   listItem.appendChild(button);
