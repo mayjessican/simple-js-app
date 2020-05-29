@@ -62,7 +62,7 @@ var pokemonRepository = (function() {
     // Function to load details for each pokemon:
     function loadDetails(item) {
         var url = item.detailsUrl;
-        return fetch(url).then(function(response) {
+        return fetch(apiUrl).then(function(response) {
             return response.json();
         }).then(function(details) {
             // Adds the details to each item
