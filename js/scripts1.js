@@ -28,7 +28,7 @@ var pokemonRepository = (function() {
         })
     }
 
-        //Function to add each pokemon and attributes
+    //Function to add each pokemon and attributes
     function add(pokemon) {
         pokemon.push(pokemon);
         console.log(pokemon);
@@ -69,7 +69,11 @@ var pokemonRepository = (function() {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
-        }).catch(function(error) {
+            item.types = [];
+            for (var i = 0; i < details.types.length; i++) {
+              item.types.push(details.types[i].type.name);
+            }
+            }).catch(function(error) {
             console.error(error);
         });
     }
