@@ -1,10 +1,9 @@
 //Wrap repository array in an IIFE to avoid accidentally accessing the global state
 var pokemonRepository = (function() {
     //Creates an empty repository
-    var pokemon = [];
-    //var pokemonList = [];
+    var repository = [];
     //Creates a variable to access the pokemon API
-    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     //Function to create a list of items from API
     function addListItem(pokemon) {
@@ -30,13 +29,13 @@ var pokemonRepository = (function() {
 
     //Function to add each pokemon and attributes
     function add(pokemon) {
-        pokemon.push(pokemon);
+        repository.push(pokemon);
         console.log(pokemon);
     }
 
     //Function to pull all pokemon data
     function getAll() {
-        return pokemon;
+        return repository;
     }
 
     //Function to load pokemon list from API
@@ -47,7 +46,7 @@ var pokemonRepository = (function() {
             // If the promise is resolved, .then is run
         }).then(function(json) {
             json.results.forEach(function(item) {
-                var url = {
+                var pokemon = {
                     name: item.name,
                     detailsUrl: item.url
                 };
@@ -62,16 +61,17 @@ var pokemonRepository = (function() {
     // Function to load details for each pokemon:
     function loadDetails(item) {
         var url = item.detailsUrl;
-        return fetch(apiUrl).then(function(response) {
+        return fetch(url).then(function(response) {
             return response.json();
-        }).then(function(details) {
+        }).then(function(pokemon) {
             // Adds the details to each item
-            item.imageUrl = details.sprites.front_default;
-            item.height = details.height;
-            item.types = details.types;
+            item.imageUrl = pokemon.sprites.front_default;
+            item.height = pokemon.height;
+            item.types = pokemon.types;
             item.types = [];
-            for (var i = 0; i < details.types.length; i++) {
-              item.types.push(details.types[i].type.name);
+            // Foreach loop for types
+            for (var i = 0; i < pokemon.types.length; i++) {
+              item.types.push(pokemon.types[i].type.name);
             }
             }).catch(function(error) {
             console.error(error);
@@ -80,7 +80,7 @@ var pokemonRepository = (function() {
 
     // Function to console.log pokemon details
     function showDetails(item) {
-        loadDetails(item).then(function() {
+        pokemonRepository.loadDetails(item).then(function() {
             console.log(item);
         });
     }
