@@ -86,66 +86,78 @@ var pokemonRepository = (function() {
     }
 
     // Shows modal content
-    // function showModal(item) {
-    //     var $modalContainer = document.querySelector('#modal-container');
-    //     // Clears existing modal content
-    //     $modalContainer.innerHTML = '';
-    //     // Creats div element in DOM
-    //     var modal = document.createElement('div');
-    //     // Adds class to div DOM element
-    //     modal.classList.add('modal');
-    //     // Creates closing button in modal content
-    //     var closeButtonElement = document.createElement('button');
-    //     closeButtonElement.classList.add('modal-close');
-    //     closeButtonElement.innerText = 'Close';
-    //     // Adds event listener to close modal when button is clicked
-    //     closeButtonElement.addEventListener('click', hideModal);
-    //     // Creates element for name in modal content
-    //     var nameElement = document.createElement('h1');
-    //     nameElement.innerText = item.name;
-    //     // Creates img in modal content
-    //     var imageElement = document.createElement('img');
-    //     imageElement.classList.add('modal-img');
-    //     imageElement.setAttribute('src', item.imageUrl);
-    //     // Creates element for height in modal content
-    //     var heightElement = document.createElement('p');
-    //     heightElement.innerText = 'height : ' + item.height + 'm';
-    //     // Appends modal content to webpage
-    //     modal.appendChild(closeButtonElement);
-    //     modal.appendChild(nameElement);
-    //     modal.appendChild(imageElement);
-    //     modal.appendChild(heightElement);
-    //     $modalContainer.appendChild(modal);
-    //
-    //     // Adds class to show modal
-    //     $modalContainer.classList.add('is-visible');
-    // }
-    //
-    // // Hides modal with close button click
-    // function hideModal() {
-    //     var $modalContainer = document.querySelector('#modal-container');
-    //     $modalContainer.classList.remove('is-visible');
-    // }
+    function showModal(item) {
+        var modalContainer = document.querySelector('#modal-container');
+        //modalContainer.classList.add('is-visible');
+        modalContainer.classList.remove('is-visible');
+        // Clears existing modal content
+        modalContainer.innerHTML = '';
+        // Creats div element in DOM
+        var modal = document.createElement('div');
+        // Adds class to div DOM element
+        modal.classList.add('modal');
+        // Creates closing button in modal content
+        var closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        // Adds event listener to close modal when button is clicked
+        var contentElement = document.createElement('p')
+        contentElement.innerText = text;
 
-    // // Hides model with ESC key click
-    // window.addEventListener('keydown', e => {
-    //     var $modalContainer = document.querySelector('#modal-container');
-    //     if (
-    //         e.key === 'Escape' &&
-    //         $modalContainer.classList.contains('is-visible')
-    //     ) {
-    //         hideModal();
-    //     }
-    // });
-    //
-    // // Hides modal with click outside of modal
-    // var modalContainer = document.querySelector('modal-container');
-    // modalContainer.addEventListener('click', e => {
-    //     var target = e.target;
-    //     if (target === $modalContainer) {
-    //         hideModal();
-    //     }
-    // });
+        //
+        closeButtonElement.addEventListener('click', hideModal);
+        // Creates element for name in modal content
+        var nameElement = document.createElement('h1');
+        nameElement.innerText = item.name;
+        // Creates img in modal content
+        var imageElement = document.createElement('img');
+        imageElement.classList.add('modal-img');
+        imageElement.setAttribute('src', item.imageUrl);
+        // Creates element for height in modal content
+        var heightElement = document.createElement('p');
+        heightElement.innerText = 'height : ' + item.height + 'm';
+        // Appends modal content to webpage
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modal.appendChild(nameElement);
+        modal.appendChild(imageElement);
+        modal.appendChild(heightElement);
+        modalContainer.appendChild(modal);
+        modalContainer.appendChild('is-visible');
+
+        // Adds class to show modal
+        modalContainer.classList.add('is-visible');
+    }
+
+    document.querySelector('#show-modal').addEventListener('click', () => {
+      showModal('Modal title', 'this is modal content');
+    });
+
+    // Hides modal with close button click
+    function hideModal() {
+        var modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
+
+    // Hides model with ESC key click
+    window.addEventListener('keydown', e => {
+        var modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' &&
+            modalContainer.classList.contains('is-visible')
+        ) {
+            hideModal();
+        }
+    });
+
+    // Hides modal with click outside of modal
+    var modalContainer = document.querySelector('#modal-container');
+    modalContainer.addEventListener('click', (e) => {
+        var target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
 
     // Returns the values that can be accessed outside of the IIFE
     return {
