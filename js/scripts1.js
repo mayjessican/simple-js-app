@@ -103,7 +103,6 @@ var pokemonRepository = (function() {
         // Adds event listener to close modal when button is clicked
         var contentElement = document.createElement('p')
         contentElement.innerText = text;
-
         //
         closeButtonElement.addEventListener('click', hideModal);
         // Creates element for name in modal content
@@ -131,7 +130,7 @@ var pokemonRepository = (function() {
     }
 
     document.querySelector('#show-modal').addEventListener('click', () => {
-      showModal('Modal title', 'this is modal content');
+      showModal();
     });
 
     // Hides modal with close button click
@@ -151,7 +150,7 @@ var pokemonRepository = (function() {
     });
 
     // Hides modal with click outside of modal
-    var modalContainer = document.querySelector('#modal-container');
+    var modalContainer = document.querySelector('.modal-container');
     modalContainer.addEventListener('click', (e) => {
         var target = e.target;
         if (target === modalContainer) {

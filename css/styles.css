@@ -28,7 +28,7 @@ button:focus {
 }
 
 #modal-container {
-  display: block;
+  display: none;
 }
 
 .class-list {
