@@ -5,6 +5,9 @@ var pokemonRepository = (function() {
     //Creates a variable to access the pokemon API
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+    // ? var pokemonContainer = document.querySelector('.pokemon-list')
+
+
     //Function to create a list of items from API
     function addListItem(pokemon) {
         //Assigns a variable to the ul list
@@ -89,7 +92,6 @@ var pokemonRepository = (function() {
     function showModal(item) {
         var modalContainer = document.querySelector('#modal-container');
         //modalContainer.classList.add('is-visible');
-        modalContainer.classList.remove('is-visible');
         // Clears existing modal content
         modalContainer.innerHTML = '';
         // Creats div element in DOM
@@ -102,7 +104,7 @@ var pokemonRepository = (function() {
         closeButtonElement.innerText = 'Close';
         // Adds event listener to close modal when button is clicked
         var contentElement = document.createElement('p')
-        contentElement.innerText = text;
+        contentElement.innerText = item.name;
         //
         closeButtonElement.addEventListener('click', hideModal);
         // Creates element for name in modal content
@@ -130,7 +132,7 @@ var pokemonRepository = (function() {
     }
 
     document.querySelector('#show-modal').addEventListener('click', () => {
-      showModal();
+      showModal(pokemon);
     });
 
     // Hides modal with close button click
