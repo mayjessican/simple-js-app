@@ -85,12 +85,12 @@ var pokemonRepository = (function() {
     function showDetails(item) {
         pokemonRepository.loadDetails(item).then(function() {
             console.log(item);
-            showModal(repository);
+            showModal(item);
         });
     }
 
     // Shows modal content
-    function showModal(title, text) {
+    function showModal(item) {
         var modalContainer = document.querySelector('#modal-container');
         modalContainer.classList.add('is-visible');
         // Clears existing modal content
@@ -106,9 +106,9 @@ var pokemonRepository = (function() {
         closeButtonElement.addEventListener('click', hideModal);
         // Creates element for name in modal content
         var titleElement = document.createElement('h1');
-        titleElement.innerText = title;
+        titleElement.innerText = item.name;
         var contentElement = document.createElement('p')
-        contentElement.innerText = text;
+        contentElement.innerText = '';
         // Creates img in modal content
         var imageElement = document.createElement('img');
         imageElement.classList.add('modal-img');
@@ -123,7 +123,7 @@ var pokemonRepository = (function() {
         modal.appendChild(imageElement);
         modal.appendChild(heightElement);
         modalContainer.appendChild(modal);
-        modalContainer.appendChild('is-visible');
+        //modalContainer.appendChild('is-visible');
 
         // Adds class to show modal
         modalContainer.classList.add('is-visible');
@@ -153,8 +153,7 @@ var pokemonRepository = (function() {
     window.addEventListener('keydown', e => {
         var modalContainer = document.querySelector('#modal-container');
         if (e.key === 'Escape' &&
-            modalContainer.classList.contains('is-visible')
-        ) {
+            modalContainer.classList.contains('is-visible')) {
             hideModal();
         }
     });
