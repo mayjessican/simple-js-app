@@ -139,6 +139,23 @@ var pokemonRepository = (function() {
         modalContainer.classList.remove('is-visible');
     };
 
+    // Hides model with ESC key click
+    window.addEventListener('keydown', e => {
+        var modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal();
+        }
+    });
+
+    // Hides modal with click outside of modal
+    var modalContainer = document.querySelector('#modal-container');
+    modalContainer.addEventListener('click', (e) => {
+        var target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
+
     // Returns the values that can be accessed outside of the IIFE
     return {
         add: add,
@@ -149,29 +166,11 @@ var pokemonRepository = (function() {
         showDetails: showDetails
     };
 
-    // Hides model with ESC key click
-    window.addEventListener('keydown', e => {
-        var modalContainer = document.querySelector('#modal-container');
-        if (e.key === 'Escape' &&
-            modalContainer.classList.contains('is-visible')) {
-            hideModal();
-        }
-    });
-
     modalContainer.addEventListener('click', (e) => {
       var target = e.target;
       if (target === modalContainer){
         hideModal();
       }
-    });
-
-    // Hides modal with click outside of modal
-    var modalContainer = document.querySelector('#modal-container');
-    modalContainer.addEventListener('click', (e) => {
-        var target = e.target;
-        if (target === modalContainer) {
-            hideModal();
-        }
     });
 })();
 
